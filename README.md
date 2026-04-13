@@ -1,36 +1,198 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio personnel en Next.js
 
-## Getting Started
+## Présentation du projet
 
-First, run the development server:
+Ce projet est un portfolio personnel développé avec **Next.js**.  
+Il a été conçu dans le cadre du **projet de conception de portfolio**.  
+
+L’objectif du projet est de créer une application web moderne, responsive et sécurisée permettant de :
+
+- présenter mon profil
+- afficher mes compétences
+- présenter mes projets
+- permettre à un utilisateur de s’inscrire et de se connecter
+- afficher et gérer des témoignages
+- protéger les pages privées
+- utiliser un backend avec **Next API**
+- utiliser **Redux Toolkit** pour la gestion d’état
+- utiliser **Axios** pour les communications entre le frontend et le backend
+
+Ce portfolio peut servir comme preuve de compétences lors d’une recherche d’emploi ou pour la présentation de mes réalisations.
+
+---
+
+## Objectifs du projet
+
+Ce projet respecte les exigences suivantes :
+
+- page d’accueil avec photo, présentation et compétences
+- entête avec navigation entre les pages
+- pied de page avec les liens utiles comme GitHub et LinkedIn
+- au minimum 2 projets et au maximum 3
+- page de détail pour chaque projet
+- récupération des projets depuis le backend via Next API
+- page d’inscription
+- page de connexion
+- gestion des témoignages
+- page d’affichage des témoignages
+- page d’ajout et de modification d’un témoignage
+- protection des pages privées
+- utilisation de Redux Toolkit
+- utilisation de Axios
+- validation des formulaires avec messages d’erreur en rouge
+
+---
+
+## Technologies utilisées
+
+### Frontend
+- Next.js
+- React
+- Tailwind CSS
+- Redux Toolkit
+- React Redux
+- Axios
+
+### Backend
+- Next.js API Routes
+- Prisma
+
+### Base de données
+- SQLite
+
+### Authentification
+- JSON Web Token (JWT)
+- Cookies
+- bcryptjs
+
+### Outils de développement
+- Visual Studio Code
+- Git
+- GitHub
+
+---
+
+## Fonctionnalités principales
+
+### 1. Page d’accueil
+La page d’accueil contient :
+- une photo de profil
+- une brève présentation
+- la liste de mes compétences
+- une navigation vers les autres sections du portfolio
+
+### 2. Navigation
+Un **header** permet d’accéder aux différentes pages :
+- Accueil
+- Projets
+- Témoignages
+- Ajouter un témoignage
+- Login
+- Inscription
+
+Un **footer** contient :
+- GitHub
+- LinkedIn
+- Email
+
+### 3. Gestion des projets
+L’application contient entre 2 et 3 projets.  
+Chaque projet possède :
+- un titre
+- une description
+- une liste de technologies utilisées
+- éventuellement une image
+- un lien GitHub
+- un lien de démonstration
+
+Les projets sont récupérés via le backend avec **Next API**.
+
+### 4. Authentification
+L’application permet :
+- de créer un compte
+- de se connecter
+- de se déconnecter
+- de vérifier si l’utilisateur est authentifié
+
+Les mots de passe sont chiffrés avec **bcryptjs**.
+
+### 5. Gestion des témoignages
+Les visiteurs authentifiés peuvent :
+- consulter la liste des témoignages
+- ajouter un témoignage
+- modifier un témoignage
+
+### 6. Protection des routes
+Toutes les pages sont protégées sauf :
+- `/login`
+- `/register`
+
+Seul un utilisateur connecté peut accéder aux autres pages.
+
+### 7. Validation des formulaires
+Tous les formulaires comportent une validation avec affichage de messages d’erreur clairs en rouge pour l’utilisateur.
+
+---
+
+## Structure du projet
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+portfolio-next/
+├── prisma/
+│   └── schema.prisma
+├── public/
+│   └── images/
+│       └── profile.jpg
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   │   └── route.js
+│   │   │   │   ├── logout/
+│   │   │   │   │   └── route.js
+│   │   │   │   ├── me/
+│   │   │   │   │   └── route.js
+│   │   │   │   └── register/
+│   │   │   │       └── route.js
+│   │   │   ├── projects/
+│   │   │   │   ├── [id]/
+│   │   │   │   │   └── route.js
+│   │   │   │   └── route.js
+│   │   │   └── testimonials/
+│   │   │       ├── [id]/
+│   │   │       │   └── route.js
+│   │   │       └── route.js
+│   │   ├── login/
+│   │   │   └── page.jsx
+│   │   ├── register/
+│   │   │   └── page.jsx
+│   │   ├── projects/
+│   │   │   ├── [id]/
+│   │   │   │   └── page.jsx
+│   │   │   └── page.jsx
+│   │   ├── testimonials/
+│   │   │   ├── edit/
+│   │   │   │   └── [id]/
+│   │   │   │       └── page.jsx
+│   │   │   ├── new/
+│   │   │   │   └── page.jsx
+│   │   │   └── page.jsx
+│   │   ├── layout.js
+│   │   └── page.jsx
+│   ├── components/
+│   │   ├── Footer.jsx
+│   │   └── Header.jsx
+│   ├── lib/
+│   │   ├── axios.js
+│   │   └── prisma.js
+│   └── redux/
+│       ├── provider.jsx
+│       ├── store.js
+│       └── slices/
+│           ├── authSlice.js
+│           ├── projectSlice.js
+│           └── testimonialSlice.js
+├── .env
+├── package.json
+└── README.md

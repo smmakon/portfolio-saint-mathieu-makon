@@ -1,5 +1,7 @@
 import "./globals.css";
-import ReduxProvider from "@/redux/provider";
+import ReduxProvider from "../redux/ReduxProvider";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export const metadata = {
   title: "Portfolio Next.js",
@@ -10,7 +12,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr">
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );

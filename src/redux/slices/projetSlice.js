@@ -15,7 +15,8 @@ const projectSlice = createSlice({
     },
     fetchProjectsSuccess: (state, action) => {
       state.loading = false;
-      state.items = action.payload;
+      // state.items = action.payload;
+      state.items = Array.isArray(action.payload) ? action.payload : [];
     },
     fetchProjectsFailure: (state, action) => {
       state.loading = false;

@@ -1,4 +1,4 @@
-import mathieu from "../public/mathieu.jpg";
+import mathieu from "../../public/mathieu.jpg";
 
 export default function HomePage() {
   return (
@@ -49,7 +49,7 @@ export default function HomePage() {
             
 
           ].map((skill) => (
-            <div key={skill} className="border rounded p-4 shadow">
+            <div key={skill} className=" border border-gray-100 rounded p-4 shadow-md bg-white">
               {skill}
             </div>
           ))}

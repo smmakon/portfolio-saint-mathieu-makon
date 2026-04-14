@@ -1,16 +1,26 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "../../../../lib/prisma";
 import { NextResponse } from "next/server";
 
-export async function GET(_, { params }) {
-  const id = parseInt(params.id);
+export async function GET(request, { params }) {
+  const { id } = await params;
 
-  const project = await prisma.project.findUnique({
-    where: { id },
-  });
+  try {
+    const project = await prisma.project.findUnique({
+      where: { id: Number(id) },
+    });
 
-  if (!project) {
-    return NextResponse.json({ message: "Projet introuvable" }, { status: 404 });
+    if (!project) {
+      return NextResponse.json(
+        { error: "Projet introuvable" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(project);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Erreur serveur" },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json(project);
 }

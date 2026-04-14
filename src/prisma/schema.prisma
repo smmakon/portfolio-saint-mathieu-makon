@@ -20,7 +20,7 @@ model Project {
   title        String
   slug         String   @unique
   description  String
-  technologies String
+  technologies Json
   image        String?
   githubUrl    String?
   demoUrl      String?

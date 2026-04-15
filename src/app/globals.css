@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #0f172a;
+  --primary-hover: #1e293b;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  min-width: 320px;
+  background: linear-gradient(to bottom, #f8fafc, #eef2ff);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.container-app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.section-spacing {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.card-ui {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.input-ui {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  transition: 0.2s ease;
+}
+
+.input-ui:focus,
+.textarea-ui:focus {
+  outline: none;
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.15);
+}
+
+.textarea-ui {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  min-height: 140px;
+  resize: vertical;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1.2rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: white;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1.2rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.page-title {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.page-subtitle {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+@media (max-width: 380px) {
+  .container-app {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+.card-ui {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-ui:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.btn-primary,
+.btn-secondary {
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

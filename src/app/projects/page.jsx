@@ -11,8 +11,7 @@ import {
   fetchProjectsSuccess,
   fetchProjectsFailure,
 } from "../../redux/slices/projetSlice";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card'; 
+
 
 import "./page.css"
 
@@ -25,7 +24,6 @@ export default function ProjectsPage() {
       try {
         dispatch(fetchProjectsStart());
         const res = await api.get("/api/projects");
-        console.log("API projects :", res.data);
         dispatch(fetchProjectsSuccess(res.data));
       } catch (err) {
         dispatch(fetchProjectsFailure("Erreur lors du chargement des projets"));
@@ -37,7 +35,7 @@ export default function ProjectsPage() {
 
   return (
     <>  
-      <main className="max-w-6xl mx-auto p-6">
+      <main className="max-w-6xl mx-auto p-6 container-app section-spacing fade-in-up">
         <h2 className="text-3xl font-bold mb-6">Mes projets</h2>
 
         {loading && <p>Chargement...</p>}
@@ -45,7 +43,7 @@ export default function ProjectsPage() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {items.map((project) => (
-            <div key={project.id} className=" border border-gray-100 rounded p-4 shadow-md bg-white">
+            <div key={project.id} className=" border border-gray-100 rounded p-4 shadow-md bg-white card-ui overflow-hidden hover:scale-[1.01]">
                  <div  className="mb-4 " >
                     <img src={project.image} alt="test" />
                 </div> 

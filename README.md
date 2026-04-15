@@ -136,6 +136,18 @@ Seul un utilisateur connecté peut accéder aux autres pages.
 Tous les formulaires comportent une validation avec affichage de messages d’erreur clairs en rouge pour l’utilisateur.
 
 ---
+### 8. Quelques Captures
+<img width="808" height="496" alt="image" src="https://github.com/user-attachments/assets/553178ae-4529-4666-b17d-7491dfb6c5b4" />
+<img width="810" height="491" alt="image" src="https://github.com/user-attachments/assets/7d87a049-b2ce-4151-9561-2c2ea4d7e744" />
+<img width="815" height="488" alt="image" src="https://github.com/user-attachments/assets/52bf2872-c0e1-4998-adb9-bc25cf8e12b6" />
+<img width="806" height="491" alt="image" src="https://github.com/user-attachments/assets/90f8c5f8-80b2-40b0-b7f1-9dc460579dbb" />
+<img width="819" height="496" alt="image" src="https://github.com/user-attachments/assets/e2b180ec-ee73-46c7-9b09-c3e512619135" />
+<img width="809" height="502" alt="image" src="https://github.com/user-attachments/assets/21939a56-26a2-4131-a2b0-fa0af932184a" />
+
+
+
+
+
 
 ## Structure du projet
 

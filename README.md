@@ -145,13 +145,9 @@ Tous les formulaires comportent une validation avec affichage de messages d’er
 <img width="809" height="502" alt="image" src="https://github.com/user-attachments/assets/21939a56-26a2-4131-a2b0-fa0af932184a" />
 
 
-
-
-
-
 ## Structure du projet
 
-
+```bash
 portfolio-next/
 ├── prisma/
 │   └── schema.prisma
@@ -213,9 +209,7 @@ portfolio-next/
 └── README.md
 
 
-
 ---
-
 ## ⚙️ Installation
 
 # Cloner le projet
@@ -236,5 +230,7 @@ npx prisma migrate dev
 Saint-mathieu Makon
 Devellopeur Fullstack
 GitHub : https://github.com/smmakon
+
+
 
 

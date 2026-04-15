@@ -17,23 +17,23 @@ export default function LoginPage() {
 
   const [localErrors, setLocalErrors] = useState({});
 
-    const validate = () => {
-        const errors = {};
+  const validate = () => {
+    const errors = {};
 
-        if (!form.email.trim()) {
-        errors.email = "L'email est obligatoire";
-        }
+    if (!form.email.trim()) {
+      errors.email = "L'email est obligatoire";
+    }
 
-        if (!form.password.trim()) {
-        errors.password = "Le mot de passe est obligatoire";
-        }
+    if (!form.password.trim()) {
+      errors.password = "Le mot de passe est obligatoire";
+    }
 
-        return errors;
-    };
+    return errors;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const errors = validate();
     setLocalErrors(errors);
 
@@ -48,20 +48,22 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="max-w-md mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6">Connexion</h2>
+    <main className="container-app section-spacing container-app section-spacing fade-in-up">
+      <div className="mx-auto max-w-md card-ui p-6 sm:p-8">
+        <h2 className="text-3xl font-bold mb-2">Connexion</h2>
+        <p className="text-muted mb-6">Accédez à votre espace personnel.</p>
 
-      <form onSubmit={handleSubmit} className="space-y-4 border p-6 rounded shadow">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <input
               type="email"
               placeholder="Email"
-              className="w-full border p-3 rounded"
+              className="input-ui"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
             {localErrors.email && (
-              <p className="text-red-500 text-sm">{localErrors.email}</p>
+              <p className="text-red-500 text-sm mt-1">{localErrors.email}</p>
             )}
           </div>
 
@@ -69,12 +71,14 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="Mot de passe"
-              className="w-full border p-3 rounded"
+              className="input-ui"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
             {localErrors.password && (
-              <p className="text-red-500 text-sm">{localErrors.password}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {localErrors.password}
+              </p>
             )}
           </div>
 
@@ -83,11 +87,12 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded"
+            className="btn-primary w-full"
           >
             {loading ? "Connexion..." : "Se connecter"}
           </button>
-          </form>   
+        </form>
+      </div>
     </main>
   );
 }

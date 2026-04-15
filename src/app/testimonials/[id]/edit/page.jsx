@@ -48,7 +48,6 @@ export default function EditTestimonialPage() {
     }
 
     setErrors(newErrors);
-
     return Object.keys(newErrors).length === 0;
   };
 
@@ -65,66 +64,89 @@ export default function EditTestimonialPage() {
     }
   };
 
-  if (loading) return <p>Chargement...</p>;
+  if (loading) {
+    return (
+      <main className="container-app section-spacing fade-in-up">
+        <div className="mx-auto max-w-2xl card-ui p-6 sm:p-8 text-center">
+          <p className="text-muted">Chargement du témoignage...</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
-    <main className="max-w-2xl mx-auto p-6">
-      <button
-        type="button"
-        onClick={() => router.push("/testimonials")}
-        className="mb-4 text-blue-600 hover:underline font-bold"
-      >
-        ← Retour aux témoignages
-      </button>
-
-      <h1 className="text-2xl font-bold mb-6">Modifier le témoignage</h1>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        
-        {/* Auteur */}
-        <div>
-          <input
-            type="text"
-            value={form.author}
-            disabled
-            className={`w-full border bg-gray-100 rounded p-3 ${
-              errors.author ? "border-red-500" : ""
-            }`}
-          />
-          {errors.author && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.author}
-            </p>
-          )}
-        </div>
-
-        {/* Message */}
-        <div>
-          <textarea
-            value={form.message}
-            onChange={(e) =>
-              setForm({ ...form, message: e.target.value })
-            }
-            placeholder="Message"
-            className={`w-full border rounded p-3 ${
-              errors.message ? "border-red-500" : ""
-            }`}
-            rows={5}
-          />
-          {errors.message && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.message}
-            </p>
-          )}
-        </div>
-
+    <main className="container-app section-spacing fade-in-up">
+      <div className="mx-auto max-w-2xl">
         <button
-          type="submit"
-          className="bg-slate-900 text-white px-5 py-2 rounded"
+          type="button"
+          onClick={() => router.push("/testimonials")}
+          className="btn-secondary mb-4"
         >
-          Enregistrer
+          ← Retour aux témoignages
         </button>
-      </form>
+
+        <div className="card-ui p-6 sm:p-8">
+          <div className="mb-6">
+            <p className="mb-2 inline-block rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
+              Modification
+            </p>
+
+            <h1 className="text-3xl font-bold mb-2">Modifier le témoignage</h1>
+            <p className="text-muted leading-7">
+              Mettez à jour votre message puis enregistrez les changements.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold mb-2">Auteur</label>
+              <input
+                type="text"
+                value={form.author}
+                disabled
+                className={`input-ui bg-slate-100 cursor-not-allowed ${
+                  errors.author ? "border-red-500" : ""
+                }`}
+              />
+              {errors.author && (
+                <p className="text-red-500 text-sm mt-1">{errors.author}</p>
+              )}
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold mb-2">Message</label>
+              <textarea
+                value={form.message}
+                onChange={(e) =>
+                  setForm({ ...form, message: e.target.value })
+                }
+                placeholder="Modifiez votre message"
+                className={`textarea-ui ${
+                  errors.message ? "border-red-500" : ""
+                }`}
+                rows={6}
+              />
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+              <button type="submit" className="btn-primary w-full sm:w-auto">
+                Enregistrer
+              </button>
+
+              <button
+                type="button"
+                onClick={() => router.push("/testimonials")}
+                className="btn-secondary w-full sm:w-auto"
+              >
+                Annuler
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </main>
   );
 }

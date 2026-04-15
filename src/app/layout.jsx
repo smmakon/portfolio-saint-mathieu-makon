@@ -1,4 +1,3 @@
-
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -11,15 +10,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="fr">
       <body>
         <Providers>
-        <AuthLoader />
-          <Header />
-          {children}
-          <Footer />
+          <AuthLoader />
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>

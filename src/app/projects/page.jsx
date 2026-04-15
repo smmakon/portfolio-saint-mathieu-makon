@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import api from "axios";
 import Link from "next/link";
-import Image from "next/image";
 
 
 import {

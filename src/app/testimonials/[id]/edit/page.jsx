@@ -72,7 +72,7 @@ export default function EditTestimonialPage() {
       <button
         type="button"
         onClick={() => router.push("/testimonials")}
-        className="mb-4 text-blue-600 hover:underline"
+        className="mb-4 text-blue-600 hover:underline font-bold"
       >
         ← Retour aux témoignages
       </button>
@@ -86,11 +86,8 @@ export default function EditTestimonialPage() {
           <input
             type="text"
             value={form.author}
-            onChange={(e) =>
-              setForm({ ...form, author: e.target.value })
-            }
-            placeholder="Auteur"
-            className={`w-full border rounded p-3 ${
+            disabled
+            className={`w-full border bg-gray-100 rounded p-3 ${
               errors.author ? "border-red-500" : ""
             }`}
           />
@@ -123,7 +120,7 @@ export default function EditTestimonialPage() {
 
         <button
           type="submit"
-          className="bg-blue-600 text-white px-5 py-2 rounded"
+          className="bg-slate-900 text-white px-5 py-2 rounded"
         >
           Enregistrer
         </button>

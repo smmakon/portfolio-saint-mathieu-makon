@@ -31,15 +31,16 @@ Ce projet respecte les exigences suivantes :
 - au minimum 2 projets et au maximum 3
 - page de détail pour chaque projet
 - récupération des projets depuis le backend via Next API
-- page d’inscription
-- page de connexion
+- page d’inscription 
+- page de connexion ( login/ register avec JWT)
 - gestion des témoignages
 - page d’affichage des témoignages
-- page d’ajout et de modification d’un témoignage
+- page d’ajout et de modification d’un témoignage ( CRUD)
 - protection des pages privées
 - utilisation de Redux Toolkit
 - utilisation de Axios
 - validation des formulaires avec messages d’erreur en rouge
+- Interface responsive et professionnelle
 
 ---
 
@@ -55,10 +56,12 @@ Ce projet respecte les exigences suivantes :
 
 ### Backend
 - Next.js API Routes
+- Node.js
 - Prisma
 
 ### Base de données
 - SQLite
+- Prisma ORM
 
 ### Authentification
 - JSON Web Token (JWT)
@@ -196,3 +199,31 @@ portfolio-next/
 ├── .env
 ├── package.json
 └── README.md
+
+
+
+---
+
+## ⚙️ Installation
+
+```bash
+# Cloner le projet
+git clone https://github.com/smmakon/portfolio-saint-mathieu-makon.git
+
+cd portfolio-saint-mathieu-makon
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur
+npm run dev
+
+npx prisma generate
+npx prisma migrate dev
+
+## Auteur
+Saint-mathieu Makon
+Devellopeur Fullstack
+GitHub : https://github.com/smmakon
+
+

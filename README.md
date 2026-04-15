@@ -206,7 +206,6 @@ portfolio-next/
 
 ## ⚙️ Installation
 
-```bash
 # Cloner le projet
 git clone https://github.com/smmakon/portfolio-saint-mathieu-makon.git
 

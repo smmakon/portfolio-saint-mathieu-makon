@@ -26,7 +26,7 @@ export default function NewTestimonial() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 🔴 VALIDATION
+    // VALIDATION
     if (!form.message.trim()) {
       setError("Le message est obligatoire");
       return;

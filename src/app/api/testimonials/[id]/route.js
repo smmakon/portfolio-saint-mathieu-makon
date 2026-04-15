@@ -54,6 +54,7 @@ export async function PUT(request, { params }) {
       data: {
         author: body.author,
         message: body.message,
+        createdAt : new Date()
       },
     });
 

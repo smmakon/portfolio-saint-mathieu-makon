@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import api from "axios";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function TestimonialsPage() {
   const [data, setData] = useState([]);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -20,20 +22,35 @@ export default function TestimonialsPage() {
     <main className="max-w-4xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Témoignages</h2>
 
-      {data.map((t) => (
-        <div key={t.id} className="border p-4 mb-3">
-          <p className="font-bold">{t.author}</p>
-          <p>{t.message}</p>
+      {data.map((t) => {
+        const isOwner = user && user.name === t.author;
 
-          <Link
+        return (
+          <div key={t.id} className=" border-b-1 p-4 mb-1 border-gray-200">
+            <p className="font-bold">{t.author}</p>
+            <p className="mb-2">{t.message}</p>
+            <p className="text-sm text-gray-500">
+              {new Date(t.createdAt).toLocaleString()}
+            </p>
+            {isOwner ? (
+              <Link
                 href={`/testimonials/${t.id}/edit`}
-                className="text-blue-600 font-semibold"
+                className=" text-blue-600 font-bold "
               >
                 Modifier
-          </Link>
+              </Link>
+            ) : (
+              <button
+                disabled
+                className="text-gray-400 cursor-not-allowed font-bold"
+              >
+                Modifier
+              </button>
+            )}
+          </div>
+        );
+      })}
 
-        </div>
-      ))}
     </main>
   );
 }

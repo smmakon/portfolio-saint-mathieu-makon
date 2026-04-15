@@ -151,7 +151,7 @@ Tous les formulaires comportent une validation avec affichage de messages d’er
 
 ## Structure du projet
 
-```bash
+
 portfolio-next/
 ├── prisma/
 │   └── schema.prisma
